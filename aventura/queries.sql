@@ -1,4 +1,4 @@
-use sitios;
+use sinfronteras;
 
 show tables;
 

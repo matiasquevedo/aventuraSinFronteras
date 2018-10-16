@@ -1,26 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;color:white !important;">
     <div class="navbar-header">
         <img src="/images/embalsa.png" alt="" width="30px"> 
         <a class="navbar-brand" href="{{ route('admin.inicio')}}">
-            {{env('APP_NAME')}}</a>
+            Aventura Sin Fronteras</a>
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Actividades<span class="sr-only">(current)</span></a>
-                  </li>
-                  @foreach($categories as $category)
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">{{$category->name}}</a>
-                  </li>
-                  @endforeach
             </ul>
             <div class="form-inline">
                 
             <ul class="navbar-nav mr-auto">
               @guest
-                  <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Iniciar Sesion</a></li> 
-                  <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registrarse</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Iniciar Sesion</a></li>
               @else
                     <li class="nav-item">
                     @if(count(\Session::get('cart', array())))
@@ -29,14 +20,7 @@
                                 
                             </i>
                             <span class="badge badge-secondary">{{count(\Session::get('cart', array())) }}</span>
-                        </a>
-                    @else
-                        <a class="nav-link" href=" {{route('cart.show')}} ">
-                            <i class="fas fa-shopping-cart cart-black" style="color:gray;">
-                                
-                            </i>
-                            <span class="badge badge-notify" style="background-color: grey;">{{count(\Session::get('cart', array())) }}</span>
-                        </a>                                
+                        </a>                           
                     @endif
                     </li>
 

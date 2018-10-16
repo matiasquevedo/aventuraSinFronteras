@@ -17,9 +17,13 @@ class AddMensajeTable extends Migration
         Schema::create('mensajes', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('state',['0','1','2'])->default('0');
-            $table->string('title');
-            $table->string('largo');
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('email');
+            $table->string('telefono')->nullable();
             $table->longText('descripcion');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 

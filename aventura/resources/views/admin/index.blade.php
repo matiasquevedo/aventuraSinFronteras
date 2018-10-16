@@ -12,7 +12,7 @@
 					<h3 class="card-title">
 						<strong>Inicio</strong>
 					</h3>
-					<p class="card-text">Tareas de adminitracion de Noticias</p>
+					<p class="card-text">Plataforma de Administración</p>
 				</div>
 			</div>
 		</div>

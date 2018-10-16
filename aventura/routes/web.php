@@ -301,6 +301,12 @@ Route::get('/inicio', [
 	'as'=>'principal'
 ]);
 
+Route::resource('mensajes','MensajesController');
+Route::get('mensaje/{id}/destroy',[
+	'uses'=>'MensajesController@destroy',
+	'as'=>'mensaje.destroy'
+]);
+
 Route::get('actividad/{actividad}',[
 	'uses'=>'PrincipalController@actividadPublic',
 	'as'=>'actividad.public'
@@ -363,5 +369,7 @@ Route::post('pagar/',[
 	'uses'=>'TodoPagoController@pagar',
 	'as'=>'efectuar.pago'
 ]);
+
+
 
 

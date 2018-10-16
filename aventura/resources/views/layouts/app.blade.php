@@ -32,10 +32,6 @@
                     </button>
 
                     <!-- Branding Image -->
-
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        <img src="/images/embalsa.png" alt="" width="30px">
-                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -49,7 +45,6 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Inciar Sesion</a></li>
-                            <li><a href="{{ route('register') }}">Registrarse</a></li>
                         @else
                             @if(Auth::user()->type == 'admin')
                                 <li >

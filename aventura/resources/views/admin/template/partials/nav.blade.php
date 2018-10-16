@@ -1,9 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;color:white !important;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ route('admin.inicio')}}">
-            {{env('APP_NAME')}}
+            Aventura Sin Fronteras
             <!--<img src="/images/embalsa.png" alt="" width="30px"> --> </a>
     </div>
 
@@ -25,7 +25,6 @@
         </li> 
         <li class="nav-item"><a class="nav-link" href=" {{ route('informacion.index')}} ">Información</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('admin.eventos.index')}}">Eventos</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('proyectos.index')}}">Proyectos</a></li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fotos</span></a>          
@@ -34,6 +33,9 @@
             <a class="dropdown-item" href="{{ route('albumes.create')}}">Nuevo Album</a>
           </div>
         </li>
+
+        
+        <li class="nav-item"><a class="nav-link" href="{{ route('mensajes.index')}}">Mensajes</a></li>
 
 
         
@@ -44,7 +46,6 @@
                             <li><a href="{{ route('login') }}">Login</a></li><!-- 
                             <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
-                            <li class="nav-item"><a class="nav-link" href=" {{route('cart.show')}} "><i class="fas fa-shopping-cart"></i></a></li>
                             <li class="nav-item"><a class="nav-link" href=" {{route('principal')}} ">Pagina Principal</a></li>
 
                             <li class="nav-item dropdown">
