@@ -4,6 +4,7 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Category;
+use App\Mensaje;
 
 class ComposerServiceProvider extends ServiceProvider
 {
@@ -15,10 +16,10 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        view()->composer('nav', function ($view) {
+        view()->composer('admin.template.partials.nav', function ($view) {
             //
-            $categories = Category::all();
-            $view->with("categories",$categories);
+            $mensajes = Mensaje::where('state','=','0')->count();
+            $view->with("mensajes",$mensajes);
         });
     }
 

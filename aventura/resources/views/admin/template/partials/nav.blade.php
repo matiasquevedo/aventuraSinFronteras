@@ -34,8 +34,13 @@
           </div>
         </li>
 
-        
-        <li class="nav-item"><a class="nav-link" href="{{ route('mensajes.index')}}">Mensajes</a></li>
+
+        <li class="nav-item"><a class="nav-link" href="{{ route('mensajes.index')}}">Mensajes
+          @if($mensajes > 0)
+            <span class="badge badge-secondary"> {{$mensajes}} </span>
+          @endif
+
+        </a></li>
 
 
         
