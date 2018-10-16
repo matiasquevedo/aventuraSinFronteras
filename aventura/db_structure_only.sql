@@ -240,29 +240,7 @@ CREATE TABLE `fotos` (
 -- Table structure for table `horas`
 --
 
-DROP TABLE IF EXISTS `horas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `horas` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `horas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `proyecto_id` int(10) unsigned NOT NULL,
-  `tarea_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `horas_user_id_foreign` (`user_id`),
-  KEY `horas_proyecto_id_foreign` (`proyecto_id`),
-  KEY `horas_tarea_id_foreign` (`tarea_id`),
-  CONSTRAINT `horas_proyecto_id_foreign` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `horas_tarea_id_foreign` FOREIGN KEY (`tarea_id`) REFERENCES `tareas` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `horas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `images`
@@ -491,66 +469,15 @@ CREATE TABLE `pedidos` (
 -- Table structure for table `proveedores`
 --
 
-DROP TABLE IF EXISTS `proveedores`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `proveedores` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `empresa` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefono` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `proveedores_email_unique` (`email`),
-  UNIQUE KEY `proveedores_telefono_unique` (`telefono`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `proyectos`
 --
 
-DROP TABLE IF EXISTS `proyectos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `proyectos` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `totaldeHoras` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precioTotal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `tareas`
 --
-
-DROP TABLE IF EXISTS `tareas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tareas` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `totaldeHoras` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `proyecto_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tareas_user_id_foreign` (`user_id`),
-  KEY `tareas_proyecto_id_foreign` (`proyecto_id`),
-  CONSTRAINT `tareas_proyecto_id_foreign` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `tareas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `users`
@@ -561,8 +488,8 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` enum('nuevo','member','admin','empresa','ventas') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'member',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
