@@ -5,7 +5,9 @@
 
 <div class="container">
   <div class="text-center">
-    <h3>Sitios Web Autogestionables</h3>    
+  	<img src="/images/logo.png" alt="" width="300px">
+    
+    <h4>Estamos mejorando para brindar una experiencia de usuario</h4>  
   </div>
 
 </div>

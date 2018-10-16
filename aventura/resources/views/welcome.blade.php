@@ -18,7 +18,6 @@
 		
 	</head>
 	<body class="backHome">
-		@include('nav')
 		@include('flash::message')
 		@yield('header')
 		<section class="section-home">
