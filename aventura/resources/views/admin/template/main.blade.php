@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<meta>
-		<link rel="shortcut icon" href="/images/icon.ico" />
 		<title>@yield('title')</title>
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap4/css/bootstrap.css')}}">	
