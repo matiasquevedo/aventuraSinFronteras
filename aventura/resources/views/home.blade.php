@@ -7,7 +7,7 @@
   <div class="text-center">
   	<img src="/images/logo.png" alt="" width="300px">
     
-    <h4>Estamos mejorando para brindar una nueva experiencia de usuario</h4>  
+    <h4>Estamos mejorando para brindar una <br> nueva experiencia de usuario</h4>  
   </div>
 
 </div>
