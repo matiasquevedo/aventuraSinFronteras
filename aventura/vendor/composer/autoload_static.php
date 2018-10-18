@@ -21,6 +21,7 @@ class ComposerStaticInitd2ee1af5079ed287736df50396466b2e
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'e23faeee409e941dc9b4c80386209c39' => __DIR__ . '/..' . '/laracasts/flash/src/Laracasts/Flash/functions.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -46,6 +47,7 @@ class ComposerStaticInitd2ee1af5079ed287736df50396466b2e
         array (
             'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Iconv\\' => 23,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\VarDumper\\' => 28,
             'Symfony\\Component\\Translation\\' => 30,
@@ -167,6 +169,10 @@ class ComposerStaticInitd2ee1af5079ed287736df50396466b2e
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Iconv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-iconv',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
@@ -3900,6 +3906,7 @@ class ComposerStaticInitd2ee1af5079ed287736df50396466b2e
         'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => __DIR__ . '/..' . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
         'Symfony\\Component\\VarDumper\\VarDumper' => __DIR__ . '/..' . '/symfony/var-dumper/VarDumper.php',
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
+        'Symfony\\Polyfill\\Iconv\\Iconv' => __DIR__ . '/..' . '/symfony/polyfill-iconv/Iconv.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Symfony\\Polyfill\\Php72\\Php72' => __DIR__ . '/..' . '/symfony/polyfill-php72/Php72.php',
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
