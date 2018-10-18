@@ -20,6 +20,7 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as ImageR;
 
 class ActividadesController extends Controller
 {
@@ -67,8 +68,7 @@ class ActividadesController extends Controller
         if($request->file('image')){
             $file = $request->file('image');
             $name = 'actividad_' . time() . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/images/actividades/';
-            $file->move($path,$name);
+            $image_resize = ImageR::make($file->getRealPath())->resize(468, 249)->save('public/images/actividades/'.$name);
         }
         $actividad = new Actividad($request->all());
         $actividad->user_id = \Auth::user()->id;
