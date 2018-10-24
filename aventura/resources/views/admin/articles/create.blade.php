@@ -29,7 +29,7 @@
 			<h3>Nueva Actividad</h3>
 		</div>
 
-		{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','files'=>'true']) !!}
+		{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','class'=>'form','files'=>'true']) !!}
 
 
 		<div class="row">
@@ -85,7 +85,7 @@
 
 				<div class="form-group">
 				{!! Form::label('image','Imagen de Portada*') !!}
-				{!! Form::file('image',['id'=>'upload','name'=>'image']) !!}
+				{!! Form::file('image',['id'=>'upload','name'=>'image','enctype'=>'multipart/form-data']) !!}
 				</div>
 
 				<div class="preview">
