@@ -9330,3 +9330,11 @@ a.text-dark:hover, a.text-dark:focus {
   top:50px;
   left: 200px;
 }
+
+.navbar a {
+  color:white !important;
+}
+
+a.dropdown-item{
+  color: #fe6601 !important;
+}
