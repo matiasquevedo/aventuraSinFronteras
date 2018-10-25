@@ -1,7 +1,9 @@
 <html>
 	<head>
 		<meta>
-		<title>@yield('title')</title>
+		<title>@yield('title') | Admistrador</title>
+
+		<link rel="shortcut icon" href="images/icon.ico" />
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap4/css/bootstrap.css')}}">	
 		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">

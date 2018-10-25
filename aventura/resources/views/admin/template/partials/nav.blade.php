@@ -3,7 +3,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="{{ route('admin.inicio')}}">
-            Aventura Sin Fronteras
+            <img src="images/logo.png" width="35">
             <!--<img src="/images/embalsa.png" alt="" width="30px"> --> </a>
     </div>
 

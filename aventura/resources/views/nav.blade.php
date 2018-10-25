@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;color:white !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ route('admin.inicio')}}">
-            Aventura Sin Fronteras</a>
+        <a class="navbar-brand" href="{{ route('principal')}}">
+          <img src="images/logo.png" width="35"></a>
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">

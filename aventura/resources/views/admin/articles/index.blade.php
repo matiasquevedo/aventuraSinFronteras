@@ -1,6 +1,5 @@
 @extends('admin.template.main')
 
-
 @section('title', 'Lista de Actividades')
 
 @section('content')
