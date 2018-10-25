@@ -1,6 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;color:white !important;">
     <div class="navbar-header">
-        <img src="/images/embalsa.png" alt="" width="30px"> 
         <a class="navbar-brand" href="{{ route('admin.inicio')}}">
             Aventura Sin Fronteras</a>
     </div>

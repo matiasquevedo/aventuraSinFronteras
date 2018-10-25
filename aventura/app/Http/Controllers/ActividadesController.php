@@ -69,10 +69,13 @@ class ActividadesController extends Controller
 
             $file = $request->file('image');
             $name = 'actividad_' . time() . '.' . $file->getClientOriginalExtension();
-            $image_resize = ImageR::make($file->getRealPath())->save('public/images/actividades/'.$name,50);
+            $image_resize = ImageR::make($file->getRealPath());
+
+            $image_resize->save('images/actividades/'.$name,30);
+            //dd($image_resize);
 
         }
-
+        //17:28
 
         $actividad = new Actividad($request->all());
         $actividad->user_id = \Auth::user()->id;

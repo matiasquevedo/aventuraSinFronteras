@@ -29,11 +29,12 @@
 			<h3>Nueva Actividad</h3>
 		</div>
 
-		{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','class'=>'form','files'=>'true']) !!}
+		{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','class'=>'form','files'=>'true', 'enctype'=>'multipart/form-date']) !!}
 
 
 		<div class="row">
   			<div class="col-md-8">
+  				{{ csrf_field() }}
 				<div class="form-group">
 				{!! Form::label('title','Titulo*') !!}
 				{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
@@ -89,7 +90,7 @@
 				</div>
 
 				<div class="preview">
-					<img id="image" width="400" height="400">
+					<img id="image" src="/images/picture.svg" width="300" height="400">
 				</div>
   			</div>
 		</div>		
