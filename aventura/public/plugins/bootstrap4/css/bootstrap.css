@@ -4834,8 +4834,8 @@ input[type="button"].btn-block {
 }
 
 .badge-warning {
-  color: #212529;
-  background-color: #ffc107;
+  color: #fe6601 ;
+  background-color: #fe6601 ;
 }
 
 .badge-warning[href]:hover, .badge-warning[href]:focus {
@@ -9337,4 +9337,25 @@ a.text-dark:hover, a.text-dark:focus {
 
 a.dropdown-item{
   color: #fe6601 !important;
+}
+
+.descuento{
+  position: relative;
+  top: 60px;
+  left: 180px;
+}
+
+.descuento .badge{  
+  color: white !important;
+}
+
+a.title {
+  color:inherit;
+
+}
+
+a.title:hover {
+  color: #fe6601;
+  text-decoration: none !important;
+  
 }

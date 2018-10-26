@@ -4,15 +4,24 @@
 @section('content')
 <br>
 <div class="container">
-  <div class="text-center">
-  	<img src="/images/logo.png" alt="" width="300px">
-  	<br>
-    
-    <h3>Estamos mejorando para brindar una <br> nueva experiencia de usuario</h3>
-  </div>
-  
-
+	<div class="row">
+		@foreach($actividades as $actividad)
+			<div class="col-md-4">
+				<div class="card" style="width: 18rem;">
+				  <img class="card-img-top" src="images/actividades/{{$actividad->foto}}" alt="Card image cap">
+				  <div class="card-body">
+				  	<a href=" {{route('actividad.public',$actividad->categoryId)}} " class="title"><p><i>{{$actividad->name}}</i></p></a>
+				  	<a href=" {{route('actividad.public',$actividad->id)}} " class="title"><h5 class="card-title">{{$actividad->title}}</h5></a>
+				    <p class="card-text">{{$actividad->volanta}}</p>
+				  </div>
+				</div>
+			</div>
+		@endforeach
+	</div>
 </div>
+<br>
+<br>
+<br>
 <div style="background-color: #fe6601;">
 	<br>
 	<div class="container">
