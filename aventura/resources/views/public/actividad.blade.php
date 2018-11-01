@@ -1,103 +1,48 @@
 @extends('welcome')
 
 @section('title',$actividad->title)
-@section('header')
-<ol class="breadcrumb">
-  <li><a href="{{ route('categories.show',$actividad->category->id)}}">{{$actividad->category->name}}</a></li>
-  <li><a href="{{ route('proveedores.show',$actividad->proveedor->id)}}">{{$actividad->title}}</a></li>
-</ol>
-@endsection
 @section('content')
 <div class="container">
+	<div class="imagen text-center">
+		<img src="/images/actividades/{{$image}}" height="50%" alt="">
+	</div><br><br>
 	<h2> {{$actividad->title}} </h2>
-	<h3> {{$actividad->volanta}} </h3>
-	<div class="text-justify">
+	<h4> {{$actividad->volanta}} </h4>
+	<div class="text-left" style="word-wrap: break-word;">
 		<p>{!!$actividad->descripcion!!}</p>
+	</div><br>	
+		
+	<div class="text-left" style="word-wrap: break-word;">
+		<h4><i>Recomendaciones</i></h4>
+		<p>{!!$actividad->recomendacion!!}</p>
 	</div><br>
 
 	<div class="text-center">
-		<img src="/images/actividades/{{$image}}" height="50%" alt="">
+		
 		<div class="row info-actividad">
-			@if($actividad->largo == 0)
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-					  <div class="panel-body">
-					  	<p><i>Duracion</i></p>
-					    <h4><i class="far fa-clock"></i> {{$actividad->duracion}} min</h4>
-					  </div>
-					</div>
-				</div>
-			@elseif($actividad->duracion == 0)
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-					  <div class="panel-body">
-					  	<p><i>Largo</i></p>
-					    <h4><i class="far fa-map"></i></i> {{$actividad->largo}} km</h4>
-					  </div>
-					</div>
-				</div>
-			@else
+			@if($actividad->largo > 0 )
 				<div class="col-lg-6">
 					<div class="panel panel-default">
 					  <div class="panel-body">
-					  	<p><i>Largo</i></p>
-					    <h4><i class="far fa-map"></i></i> {{$actividad->largo}} km</h4>
+					  	<p><i>Recorrido</i></p>
+					    <h4><i class="far fa-map"></i> {{$actividad->largo}} km</h4>
 					  </div>
 					</div>
 				</div>
-				
+			@endif
+			@if($actividad->duracion > 0 )
 				<div class="col-lg-6">
 					<div class="panel panel-default">
 					  <div class="panel-body">
-					  	<p><i>Duracion</i></p>
+					  	<p><i>Duración</i></p>
 					    <h4><i class="far fa-clock"></i> {{$actividad->duracion}} min</h4>
 					  </div>
 					</div>
 				</div>
 			@endif
-
 		</div>
+
 			
-		<div class="text-justify">
-			<h4><i>Recomendaciones</i></h4>
-			<p>{!!$actividad->recomendacion!!}</p>
-		</div><br>
-
-			{!! Form::open(['route'=>['add.cart',], 'method'=>'POST']) !!}
-
-			<div class="row">
-	  			<div class="col-md-8">
-	  				<div class="row">
-	  					<div class="col-md-6" style="display: none">
-	  						<div class="form-group">
-	  						{!! Form::text('actividad',$actividad->id,['class'=>'form-control','placeholder'=>'Fecha']) !!}
-	  						</div>
-	  					</div>
-	  					<div class="col-md-6">
-	  						<div class="form-group date">
-	  						{!! Form::label('fecha','Elegir fecha') !!}
-	  						{!! Form::text('fecha',null,['class'=>'form-control datetimepicker', 'id'=>'#datetimepicker1','data-provide'=>'datepicker','placeholder'=>'dd/mm/aaaa']) !!}
-	  						</div>
-	  					</div>
-	  					<div class="col-md-6">
-	  						<div class="form-group">
-	  						{!! Form::label('pasajeros','Adultos (7 años o más)
-') !!}
-	  						{!! Form::select('pasajeros',config('multiple.adultos'),null,['class'=>'form-control select-category','required']) !!}
-	  						</div>
-	  					</div>
-	  				</div>	
-				</div>	
-
-				<div class="col-md-4">	  				
-					
-					<div class="form-group">
-						{!! Form::submit('Agregar al Carrito',['class'=>'btn btn-primary']) !!}
-					</div>
-				</div>	
-			</div>	
-
-			{!! Form::close() !!}
 
 	</div>
 	

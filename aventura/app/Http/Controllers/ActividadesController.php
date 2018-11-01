@@ -65,17 +65,24 @@ class ActividadesController extends Controller
     {
         //Manipulacion de Imagenes
         //dd($request);
-        if($request->file('image')){
+        /*if($request->file('image')){
 
             $file = $request->file('image');
             $name = 'actividad_' . time() . '.' . $file->getClientOriginalExtension();
             $image_resize = ImageR::make($file->getRealPath());
 
-            $image_resize->save('images/actividades/'.$name,30);
-            //dd($image_resize);
+            $image_resize->save('images/actividades/'.$name);
+            dd($image_resize);
 
-        }
+        }*/
         //17:28
+        if($request->file('image')){
+            $file = $request->file('image');
+            $name = 'actividad_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/actividades/';
+            $file->move($path,$name);
+        }
+
 
         $actividad = new Actividad($request->all());
         $actividad->user_id = \Auth::user()->id;

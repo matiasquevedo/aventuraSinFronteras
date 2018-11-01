@@ -26,6 +26,7 @@ class PrincipalController extends Controller
     }
 
     public function actividadPublic($actividad){
+        
         $actividad = Actividad::find($actividad);
         $image = DB::table('images')->where('actividad_id',$actividad->id)->value('foto');
         return view('public.actividad')->with("actividad",$actividad)->with('image',$image);
