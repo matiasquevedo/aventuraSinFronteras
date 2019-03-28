@@ -18,6 +18,7 @@ class AddPaquetesTable extends Migration
             $table->increments('id');
             $table->enum('state',['0','1','2'])->default('0');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->longText('descripcion');
             $table->string('precioCliente');
             $table->string('descuento');

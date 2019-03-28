@@ -22,11 +22,11 @@ class PrincipalController extends Controller
     	$categories = Category::all();
     	//dd($categories);
     	//$actividades = Actividad::where($matchThese)->get()->take(3)->inRandomOrder();
-    	$actividades = DB::table('categoryactividadespost')->get();
+    	$actividades = DB::table('actividadespostview')->get();
     	//dd($actividades);
         $paquetes = Paquete::all()->where('state',1);
         //dd("funciona el home");
-        return view('home')->with('categories',$categories)->with('actividades',$actividades)->with('paquetes',$paquetes);
+        return view('home')->with('actividades',$actividades);
     }
 
     public function actividadPublic($actividad){

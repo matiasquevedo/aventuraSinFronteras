@@ -6,7 +6,6 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="shortcut icon" href="images/icon.ico" />
-		<link href="https://portal.todopago.com.ar/app/css/boton.css" rel="stylesheet">
 		<title>@yield('title')</title>
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/full-width-pics.css')}}">	
@@ -23,8 +22,7 @@
 		@yield('header')
 		<section class="section-home">
 			@yield('content')
-			
-
+			@yield('footer')			
 		</section>
 		<script src="{{asset('plugins/jquery/jquery.js')}}"></script>
 		<script src="{{asset('plugins/bootstrap4/js/bootstrap.js')}}"></script>

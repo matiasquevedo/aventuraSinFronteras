@@ -63,42 +63,6 @@
 			<p>{!!$actividad->recomendacion!!}</p>
 		</div><br>
 
-			{!! Form::open(['route'=>['add.cart',], 'method'=>'POST']) !!}
-
-			<div class="row">
-	  			<div class="col-md-8">
-	  				<div class="row">
-	  					<div class="col-md-6" style="display: none">
-	  						<div class="form-group">
-	  						{!! Form::text('actividad',$actividad->id,['class'=>'form-control','placeholder'=>'Fecha']) !!}
-	  						</div>
-	  					</div>
-	  					<div class="col-md-6">
-	  						<div class="form-group date">
-	  						{!! Form::label('fecha','Elegir fecha') !!}
-	  						{!! Form::text('fecha',null,['class'=>'form-control datetimepicker', 'id'=>'#datetimepicker1','data-provide'=>'datepicker','placeholder'=>'dd/mm/aaaa']) !!}
-	  						</div>
-	  					</div>
-	  					<div class="col-md-6">
-	  						<div class="form-group">
-	  						{!! Form::label('pasajeros','Adultos (7 años o más)
-') !!}
-	  						{!! Form::select('pasajeros',config('multiple.adultos'),null,['class'=>'form-control select-category','required']) !!}
-	  						</div>
-	  					</div>
-	  				</div>	
-				</div>	
-
-				<div class="col-md-4">	  				
-					
-					<div class="form-group">
-						{!! Form::submit('Agregar al Carrito',['class'=>'btn btn-primary']) !!}
-					</div>
-				</div>	
-			</div>	
-
-			{!! Form::close() !!}
-
 	</div>
 	
 </div>
