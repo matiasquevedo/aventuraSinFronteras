@@ -16,6 +16,7 @@ class ActividadesPostView extends Migration
         //
         DB::statement("CREATE VIEW actividadespostview AS SELECT actividades.id,
             actividades.title,
+            actividades.slug,
             actividades.volanta,
             actividades.descripcion,
             actividades.recomendacion,

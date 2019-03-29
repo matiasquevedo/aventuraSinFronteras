@@ -91,42 +91,18 @@ class ActividadesController extends Controller
 
     }
 
-    public function EditorStore(ArticleRequest $request)
-    {
-        //Manipulacion de Imagenes
-        if($request->file('image')){
-            $file = $request->file('image');
-            $name = 'diario_' . time() . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/images/articles/';
-            $file->move($path,$name);
-        }
-        $actividad = new Actividad($request->all());
-        $actividad->user_id = \Auth::user()->id;
-        $actividad->save();
-
-        $image = new Image();
-        $image->foto = $name;
-        $image->article()->associate($article);
-        $image->save();
-
-        $article->tags()->sync($request->tags);
-        flash('Se creado el articulo ' . $article->title)->success();
-        return redirect()->route('editor.articles.index');
-
-    }
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show($slugString)
     {
         //
-        $actividad = Actividad::find($id);
-        $image = DB::table('images')->where('actividad_id',$id)->value('foto');
-        
+        $actividad = Actividad::findBySlug($slugString);
+        $image = DB::table('images')->where('actividad_id',$actividad->id)->value('foto');        
 
         return view('admin.articles.show')->with('actividad',$actividad)->with('image',$image);
     }
@@ -153,10 +129,10 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slugString)
     {
-        $actividad = Actividad::find($id);
-        $image = DB::table('images')->where('actividad_id',$id)->value('foto');
+        $actividad = Actividad::findBySlug($slugString);
+        $image = DB::table('images')->where('actividad_id',$actividad->id)->value('foto');
         $actividad->category;
         $categories = Category::orderBy('name','ASC')->pluck('name','id');
         return view('admin.articles.edit')->with('categories',$categories)->with('actividad',$actividad)->with('image',$image);        
@@ -186,10 +162,10 @@ class ActividadesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slugString)
     {
         //
-        $actividad = Actividad::find($id);
+        $actividad = Actividad::findBySlug($slugString);
         $actividad->delete();
         flash('Se a eliminado la Actividad ' . $actividad->title)->error();
         return redirect()->route('actividades.index');

@@ -29,7 +29,7 @@
         @foreach($actividades as $actividad)
         <tr>
           <td>{{ Form::checkbox('box[]',$actividad->id, null, ['class' => 'field']) }}</td>
-          <td><a href="{{ route('actividades.show', $actividad->id) }}">{{$actividad->title}}</a></td>
+          <td><a href="{{ route('actividades.show', $actividad->slug) }}">{{$actividad->title}}</a></td>
           <td>{{$actividad->user->name}}</td>
           <td>{{$actividad->category->name}}</td>
           <td>
@@ -40,9 +40,9 @@
             @endif            
           </td>
           <td>
-            <a href="{{ route('actividades.edit', $actividad->id) }}" class="btn btn-warning"><i class="fas fa-wrench"></i>
+            <a href="{{ route('actividades.edit', $actividad->slug) }}" class="btn btn-warning"><i class="fas fa-wrench"></i>
             </a>
-            <a href="{{ route('actividades.destroy', $actividad->id) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+            <a href="{{ route('actividades.destroy', $actividad->slug) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
             </a>
           </td>
         </tr>

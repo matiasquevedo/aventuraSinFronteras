@@ -4,6 +4,7 @@
 @section('content')
 <br>
 <div class="container">
+	@if(count($actividades)>0)	
 	<h3>Actividades de Aventura</h3>
 	<div class="row">
 		@foreach($actividades as $actividad)
@@ -13,26 +14,21 @@
 				  
 				  <div class="card-body">
 				  	<p><i>{{$actividad->name}}</i></p>
-				    <h5 class="card-title">{{$actividad->title}}</h5>
+				    <h5 class="card-title"><a href=" {{route('actividad.public',$actividad->slug)}} ">{{$actividad->title}}</h5></a>
 				    <p class="card-text"> {{$actividad->volanta}} </p>
 				  </div>
 				</div>
 			</div>
 		@endforeach
 	</div>
+	@else
+	<div>
+		<h3>No hay Actividades</h3>
+	</div>
+	@endif
 </div>
 <br>
 @endsection
 
-@section('footer')
-<div style="background-color: #fe6601; height: 50px;color:white;">
-	<div class="container">
-		<div class="text-center" style="position: relative; top:10px;">
-			<p>Aventura Sin Fronteras</p>
-		</div>
-	</div>
-</div>
-
-@endsection
 
 

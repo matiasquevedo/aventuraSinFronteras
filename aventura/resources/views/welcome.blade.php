@@ -6,7 +6,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="shortcut icon" href="images/icon.ico" />
-		<title>@yield('title')</title>
+		<title>@yield('title') | Aventura Sin Fronteras</title>
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/full-width-pics.css')}}">	
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap4/css/bootstrap.css')}}">

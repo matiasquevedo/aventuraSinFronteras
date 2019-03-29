@@ -4,8 +4,13 @@
           <img src="images/logo.png" width="35"></a>
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            </ul>
+           <ul class="navbar-nav mr-auto">
+            @foreach($categories as $category)
+              <li class="nav-item"><a class="nav-link" href=" {{route('categoria.public',$category->slug)}} "> {{$category->name}} <span class="sr-only">(current)</span></a></li>
+            @endforeach
+            <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>    
+
+          </ul>
             <div class="form-inline">
                 
             <ul class="navbar-nav mr-auto">

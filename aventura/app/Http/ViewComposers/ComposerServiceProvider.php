@@ -21,6 +21,12 @@ class ComposerServiceProvider extends ServiceProvider
             $mensajes = Mensaje::where('state','=','0')->count();
             $view->with("mensajes",$mensajes);
         });
+
+        view()->composer('nav', function ($view) {
+            //
+            $categories = Category::all();
+            $view->with("categories",$categories);
+        });
     }
 
     /**

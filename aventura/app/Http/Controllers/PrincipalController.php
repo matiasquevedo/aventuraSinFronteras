@@ -29,10 +29,16 @@ class PrincipalController extends Controller
         return view('home')->with('actividades',$actividades);
     }
 
-    public function actividadPublic($actividad){
-        $actividad = Actividad::find($actividad);
+    public function actividadPublic($slugString){
+        $actividad = Actividad::findBySlug($slugString);
         $image = DB::table('images')->where('actividad_id',$actividad->id)->value('foto');
         return view('public.actividad')->with("actividad",$actividad)->with('image',$image);
+    }
+
+    public function categoryPublic($slugString){
+        $category = Category::findBySlug($slugString);
+        $actividades = DB::table('categoryactividadespost')->where('category_id','=',$category->id)->get();
+        return view('public.category')->with('category',$category)->with('actividades',$actividades);
     }
 
 }

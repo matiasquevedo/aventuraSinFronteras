@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
 --
--- Host: 127.0.0.1    Database: sinfronteras
+-- Host: localhost    Database: aventura_plataforma
 -- ------------------------------------------------------
--- Server version	5.7.23-0ubuntu0.16.04.1
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+ SET NAMES utf8 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -16,37 +16,17 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `actividadPaquete`
---
-
-DROP TABLE IF EXISTS `actividadPaquete`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `actividadPaquete` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `paquete_id` int(10) unsigned NOT NULL,
-  `actividad_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actividadpaquete_paquete_id_foreign` (`paquete_id`),
-  KEY `actividadpaquete_actividad_id_foreign` (`actividad_id`),
-  CONSTRAINT `actividadpaquete_actividad_id_foreign` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `actividadpaquete_paquete_id_foreign` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `actividades`
 --
 
 DROP TABLE IF EXISTS `actividades`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `actividades` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `state` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `volanta` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `duracion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `largo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -63,17 +43,17 @@ CREATE TABLE `actividades` (
   KEY `actividades_category_id_foreign` (`category_id`),
   CONSTRAINT `actividades_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   CONSTRAINT `actividades_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `actividadespaquetes`
+-- Temporary view structure for view `actividadespaquetes`
 --
 
 DROP TABLE IF EXISTS `actividadespaquetes`;
 /*!50001 DROP VIEW IF EXISTS `actividadespaquetes`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+SET character_set_client = utf8mb4;
 /*!50001 CREATE VIEW `actividadespaquetes` AS SELECT 
  1 AS `id`,
  1 AS `title`,
@@ -84,16 +64,17 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary table structure for view `actividadespostview`
+-- Temporary view structure for view `actividadespostview`
 --
 
 DROP TABLE IF EXISTS `actividadespostview`;
 /*!50001 DROP VIEW IF EXISTS `actividadespostview`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+SET character_set_client = utf8mb4;
 /*!50001 CREATE VIEW `actividadespostview` AS SELECT 
  1 AS `id`,
  1 AS `title`,
+ 1 AS `slug`,
  1 AS `volanta`,
  1 AS `descripcion`,
  1 AS `recomendacion`,
@@ -107,12 +88,33 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Table structure for table `actividadPaquete`
+--
+
+DROP TABLE IF EXISTS `actividadPaquete`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `actividadPaquete` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `paquete_id` int(10) unsigned NOT NULL,
+  `actividad_id` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `actividadpaquete_paquete_id_foreign` (`paquete_id`),
+  KEY `actividadpaquete_actividad_id_foreign` (`actividad_id`),
+  CONSTRAINT `actividadpaquete_actividad_id_foreign` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `actividadpaquete_paquete_id_foreign` FOREIGN KEY (`paquete_id`) REFERENCES `paquetes` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `albumes`
 --
 
 DROP TABLE IF EXISTS `albumes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `albumes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `titulo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -134,28 +136,31 @@ CREATE TABLE `albumes` (
 
 DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `categoryactividadespost`
+-- Temporary view structure for view `categoryactividadespost`
 --
 
 DROP TABLE IF EXISTS `categoryactividadespost`;
 /*!50001 DROP VIEW IF EXISTS `categoryactividadespost`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+SET character_set_client = utf8mb4;
 /*!50001 CREATE VIEW `categoryactividadespost` AS SELECT 
  1 AS `actividades`,
  1 AS `foto`,
  1 AS `state`,
+ 1 AS `slug`,
+ 1 AS `volanta`,
  1 AS `title`,
  1 AS `precioPublico`,
  1 AS `descuento`,
@@ -170,7 +175,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `eventos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `eventos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `state` enum('0','1') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
@@ -191,34 +196,12 @@ CREATE TABLE `eventos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `eventospostview`
---
-
-DROP TABLE IF EXISTS `eventospostview`;
-/*!50001 DROP VIEW IF EXISTS `eventospostview`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `eventospostview` AS SELECT 
- 1 AS `id`,
- 1 AS `title`,
- 1 AS `fecha`,
- 1 AS `hora`,
- 1 AS `precio`,
- 1 AS `lugar`,
- 1 AS `tipo`,
- 1 AS `descripcion`,
- 1 AS `created_at`,
- 1 AS `updated_at`,
- 1 AS `foto`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `fotos`
 --
 
 DROP TABLE IF EXISTS `fotos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `fotos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -233,40 +216,12 @@ CREATE TABLE `fotos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `horas`
---
-
-DROP TABLE IF EXISTS `horas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `horas` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fecha` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `horas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `proyecto_id` int(10) unsigned NOT NULL,
-  `tarea_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `horas_user_id_foreign` (`user_id`),
-  KEY `horas_proyecto_id_foreign` (`proyecto_id`),
-  KEY `horas_tarea_id_foreign` (`tarea_id`),
-  CONSTRAINT `horas_proyecto_id_foreign` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `horas_tarea_id_foreign` FOREIGN KEY (`tarea_id`) REFERENCES `tareas` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `horas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `images`
 --
 
 DROP TABLE IF EXISTS `images`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `images` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -276,7 +231,7 @@ CREATE TABLE `images` (
   PRIMARY KEY (`id`),
   KEY `images_actividad_id_foreign` (`actividad_id`),
   CONSTRAINT `images_actividad_id_foreign` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,7 +240,7 @@ CREATE TABLE `images` (
 
 DROP TABLE IF EXISTS `imagesEventos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `imagesEventos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -304,7 +259,7 @@ CREATE TABLE `imagesEventos` (
 
 DROP TABLE IF EXISTS `imagesInformacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `imagesInformacion` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `foto` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -323,7 +278,7 @@ CREATE TABLE `imagesInformacion` (
 
 DROP TABLE IF EXISTS `informacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `informacion` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `direccion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -345,7 +300,7 @@ CREATE TABLE `informacion` (
 
 DROP TABLE IF EXISTS `informaciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `informaciones` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `state` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
@@ -364,13 +319,13 @@ CREATE TABLE `informaciones` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `informacionespost`
+-- Temporary view structure for view `informacionespost`
 --
 
 DROP TABLE IF EXISTS `informacionespost`;
 /*!50001 DROP VIEW IF EXISTS `informacionespost`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+SET character_set_client = utf8mb4;
 /*!50001 CREATE VIEW `informacionespost` AS SELECT 
  1 AS `id`,
  1 AS `title`,
@@ -382,36 +337,12 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
--- Table structure for table `items`
---
-
-DROP TABLE IF EXISTS `items`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `items` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pedido_id` int(10) unsigned NOT NULL,
-  `actividad_id` int(10) unsigned NOT NULL,
-  `fecha` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cantidad` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `costo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `items_pedido_id_foreign` (`pedido_id`),
-  KEY `items_actividad_id_foreign` (`actividad_id`),
-  CONSTRAINT `items_actividad_id_foreign` FOREIGN KEY (`actividad_id`) REFERENCES `actividades` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `items_pedido_id_foreign` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `mensajes`
 --
 
 DROP TABLE IF EXISTS `mensajes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `mensajes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `state` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
@@ -424,7 +355,7 @@ CREATE TABLE `mensajes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -433,13 +364,13 @@ CREATE TABLE `mensajes` (
 
 DROP TABLE IF EXISTS `migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,11 +379,12 @@ CREATE TABLE `migrations` (
 
 DROP TABLE IF EXISTS `paquetes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `paquetes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `state` enum('0','1','2') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `precioCliente` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `descuento` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -468,17 +400,18 @@ CREATE TABLE `paquetes` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Temporary table structure for view `paquetespostview`
+-- Temporary view structure for view `paquetespostview`
 --
 
 DROP TABLE IF EXISTS `paquetespostview`;
 /*!50001 DROP VIEW IF EXISTS `paquetespostview`*/;
 SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+SET character_set_client = utf8mb4;
 /*!50001 CREATE VIEW `paquetespostview` AS SELECT 
  1 AS `id`,
  1 AS `state`,
  1 AS `title`,
+ 1 AS `slug`,
  1 AS `descripcion`,
  1 AS `precioCliente`,
  1 AS `descuento`,
@@ -495,7 +428,7 @@ SET character_set_client = @saved_cs_client;
 
 DROP TABLE IF EXISTS `password_resets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -505,76 +438,12 @@ CREATE TABLE `password_resets` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `pedidos`
---
-
-DROP TABLE IF EXISTS `pedidos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pedidos` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL,
-  `precioTotal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status` enum('pago','nopago','devuelto') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'nopago',
-  `items` enum('realizados','finalizados','nocumplido') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'nocumplido',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pedidos_user_id_foreign` (`user_id`),
-  CONSTRAINT `pedidos_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `proyectos`
---
-
-DROP TABLE IF EXISTS `proyectos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `proyectos` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precio` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `totaldeHoras` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `precioTotal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tareas`
---
-
-DROP TABLE IF EXISTS `tareas`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tareas` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `totaldeHoras` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `proyecto_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `tareas_user_id_foreign` (`user_id`),
-  KEY `tareas_proyecto_id_foreign` (`proyecto_id`),
-  CONSTRAINT `tareas_proyecto_id_foreign` FOREIGN KEY (`proyecto_id`) REFERENCES `proyectos` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `tareas_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+ SET character_set_client = utf8mb4 ;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -586,7 +455,7 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -602,7 +471,7 @@ CREATE TABLE `users` (
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `actividadespaquetes` AS select `actividades`.`id` AS `id`,`actividades`.`title` AS `title`,`actividades`.`descripcion` AS `descripcion`,`actividades`.`recomendacion` AS `recomendacion`,`actividadPaquete`.`actividad_id` AS `actividad_id`,`actividadPaquete`.`paquete_id` AS `paquete_id` from (`actividades` join `actividadPaquete`) where (`actividadPaquete`.`actividad_id` = `actividades`.`id`) */;
+/*!50001 VIEW `actividadespaquetes` AS select `actividades`.`id` AS `id`,`actividades`.`title` AS `title`,`actividades`.`descripcion` AS `descripcion`,`actividades`.`recomendacion` AS `recomendacion`,`actividadpaquete`.`actividad_id` AS `actividad_id`,`actividadpaquete`.`paquete_id` AS `paquete_id` from (`actividades` join `actividadpaquete`) where (`actividadpaquete`.`actividad_id` = `actividades`.`id`) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -620,7 +489,7 @@ CREATE TABLE `users` (
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `actividadespostview` AS select `actividades`.`id` AS `id`,`actividades`.`title` AS `title`,`actividades`.`volanta` AS `volanta`,`actividades`.`descripcion` AS `descripcion`,`actividades`.`recomendacion` AS `recomendacion`,`actividades`.`duracion` AS `duracion`,`actividades`.`largo` AS `largo`,`actividades`.`state` AS `state`,`images`.`foto` AS `foto`,`categories`.`name` AS `name`,`actividades`.`created_at` AS `created_at`,`actividades`.`updated_at` AS `updated_at` from ((`actividades` join `images`) join `categories`) where ((`actividades`.`state` = '1') and (`categories`.`id` = `actividades`.`category_id`) and (`images`.`actividad_id` = `actividades`.`id`)) order by `actividades`.`updated_at` desc */;
+/*!50001 VIEW `actividadespostview` AS select `actividades`.`id` AS `id`,`actividades`.`title` AS `title`,`actividades`.`slug` AS `slug`,`actividades`.`volanta` AS `volanta`,`actividades`.`descripcion` AS `descripcion`,`actividades`.`recomendacion` AS `recomendacion`,`actividades`.`duracion` AS `duracion`,`actividades`.`largo` AS `largo`,`actividades`.`state` AS `state`,`images`.`foto` AS `foto`,`categories`.`name` AS `name`,`actividades`.`created_at` AS `created_at`,`actividades`.`updated_at` AS `updated_at` from ((`actividades` join `images`) join `categories`) where ((`actividades`.`state` = '1') and (`categories`.`id` = `actividades`.`category_id`) and (`images`.`actividad_id` = `actividades`.`id`)) order by `actividades`.`updated_at` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -638,25 +507,7 @@ CREATE TABLE `users` (
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `categoryactividadespost` AS select `actividades`.`id` AS `actividades`,`images`.`foto` AS `foto`,`actividades`.`state` AS `state`,`actividades`.`title` AS `title`,`actividades`.`precioPublico` AS `precioPublico`,`actividades`.`descuento` AS `descuento`,`categories`.`name` AS `name`,`categories`.`id` AS `category_id`,`actividades`.`created_at` AS `created_at` from ((`actividades` join `categories`) join `images`) where ((`actividades`.`state` = '1') and (`categories`.`id` = `actividades`.`category_id`) and (`images`.`actividad_id` = `actividades`.`id`)) order by `images`.`actividad_id` desc */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `eventospostview`
---
-
-/*!50001 DROP VIEW IF EXISTS `eventospostview`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `eventospostview` AS select `eventos`.`id` AS `id`,`eventos`.`title` AS `title`,`eventos`.`fecha` AS `fecha`,`eventos`.`hora` AS `hora`,`eventos`.`precio` AS `precio`,`eventos`.`lugar` AS `lugar`,`eventos`.`tipo` AS `tipo`,`eventos`.`descripcion` AS `descripcion`,`eventos`.`created_at` AS `created_at`,`eventos`.`updated_at` AS `updated_at`,`imagesEventos`.`foto` AS `foto` from (`eventos` join `imagesEventos`) where ((`eventos`.`state` = '1') and (`imagesEventos`.`evento_id` = `eventos`.`id`)) order by `eventos`.`updated_at` desc */;
+/*!50001 VIEW `categoryactividadespost` AS select `actividades`.`id` AS `actividades`,`images`.`foto` AS `foto`,`actividades`.`state` AS `state`,`actividades`.`slug` AS `slug`,`actividades`.`volanta` AS `volanta`,`actividades`.`title` AS `title`,`actividades`.`precioPublico` AS `precioPublico`,`actividades`.`descuento` AS `descuento`,`categories`.`name` AS `name`,`categories`.`id` AS `category_id`,`actividades`.`created_at` AS `created_at` from ((`actividades` join `categories`) join `images`) where ((`actividades`.`state` = '1') and (`categories`.`id` = `actividades`.`category_id`) and (`images`.`actividad_id` = `actividades`.`id`)) order by `images`.`actividad_id` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -692,7 +543,7 @@ CREATE TABLE `users` (
 /*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `paquetespostview` AS select `paquetes`.`id` AS `id`,`paquetes`.`state` AS `state`,`paquetes`.`title` AS `title`,`paquetes`.`descripcion` AS `descripcion`,`paquetes`.`precioCliente` AS `precioCliente`,`paquetes`.`descuento` AS `descuento`,`paquetes`.`fechaInicio` AS `fechaInicio`,`paquetes`.`fechaTermino` AS `fechaTermino`,`paquetes`.`user_id` AS `user_id`,`paquetes`.`created_at` AS `created_at`,`paquetes`.`updated_at` AS `updated_at` from `paquetes` where (`paquetes`.`state` = '1') */;
+/*!50001 VIEW `paquetespostview` AS select `paquetes`.`id` AS `id`,`paquetes`.`state` AS `state`,`paquetes`.`title` AS `title`,`paquetes`.`slug` AS `slug`,`paquetes`.`descripcion` AS `descripcion`,`paquetes`.`precioCliente` AS `precioCliente`,`paquetes`.`descuento` AS `descuento`,`paquetes`.`fechaInicio` AS `fechaInicio`,`paquetes`.`fechaTermino` AS `fechaTermino`,`paquetes`.`user_id` AS `user_id`,`paquetes`.`created_at` AS `created_at`,`paquetes`.`updated_at` AS `updated_at` from `paquetes` where (`paquetes`.`state` = '1') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -706,4 +557,4 @@ CREATE TABLE `users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-16 12:55:48
+-- Dump completed on 2019-03-28 22:10:25

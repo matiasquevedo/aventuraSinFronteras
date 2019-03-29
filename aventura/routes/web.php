@@ -312,6 +312,11 @@ Route::get('actividad/{actividad}',[
 	'as'=>'actividad.public'
 ]);
 
+Route::get('categoria/{categoria}',[
+	'uses'=>'PrincipalController@categoryPublic',
+	'as'=>'categoria.public'
+]);
+
 
 Route::get('evento/{id}/',[
 		'uses'=>'EventosController@PublicShow',

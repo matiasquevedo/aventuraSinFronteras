@@ -17,7 +17,9 @@ class ActividadesByCategory extends Migration
         DB::statement("CREATE VIEW categoryactividadespost AS SELECT actividades.id 
                         AS actividades, 
                         images.foto, 
-                        actividades.state, 
+                        actividades.state,
+                        actividades.slug,
+                        actividades.volanta,   
                         actividades.title,
                         actividades.precioPublico,
                         actividades.descuento, 
