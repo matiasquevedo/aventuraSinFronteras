@@ -30,7 +30,7 @@
 
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</span></a>          
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         @if(Auth::user()->type == "admin")
                             <a class="dropdown-item" href="{{route('admin.inicio')}}">Mi Perfil</a>
                         @else                                    
