@@ -5,29 +5,32 @@
 
 @section('content')
 
-</div>
-
- <div class="container">
-  <div >
+<div class="container mb-5">
+  <div class="mb-3">
     
     <a href="{{ route('albumes.create')}}" class="btn btn-info">Nuevo Album</a>
 
   </div>
     <div class="row"><br>
       @foreach($albumes as $album)
-          <a href="{{ route('albumes.show', $album->id) }}">
-            <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
-                <img src="/fotos/albumes/{{$album->portada}}" class="img-responsive">
-                <h3> {{$album->titulo}} </h3><a href="{{ route('albumes.destroy', $album->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+        <div class="col-lg-4 col-md-4 col-sm-6 mt-3">
+          <div class="card" style="width: 18rem;">
+            <img src="/images/album/portada/thumbnail/{{$album->portada}}" class="card-img-top" alt="..." style="max-height: 18rem; min-height: 18rem; ">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <a href="{{ route('albumes.show', $album->slug) }}">                
+                  <h5 class="card-title">{{$album->titulo}}</h5>
+                </a>
+                <a href="{{ route('albumes.destroy', $album->slug) }}" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                </a>
+              </div>              
             </div>
-          </a>
-
-        @endforeach
+          </div>        
+        </div>          
+      @endforeach
     </div>
     {!! $albumes->render() !!}  
 </div>
-
-{!! Form::close() !!}
 
 @endsection
 
@@ -38,8 +41,7 @@
       placeholder_text_multiple:'Ubicacion de Publicidad',
       search_contains:true,
 
-    });
-    
+    });    
 
     
   </script>

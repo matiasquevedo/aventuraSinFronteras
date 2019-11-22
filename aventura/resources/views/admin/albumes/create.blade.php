@@ -1,7 +1,7 @@
 @extends('admin.template.main')
 
 
-@section('title', 'Nuevo Articulo')
+@section('title', 'Nuevo Album')
 
 @section('content')
 

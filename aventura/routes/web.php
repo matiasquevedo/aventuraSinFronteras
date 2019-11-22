@@ -40,10 +40,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'ActividadesController@destroy',
 		'as'=>'actividades.destroy'
 	]);
+
 	Route::get('actividades/destroy/varios',[
 		'uses'=>'ActividadesController@eliminarVarios',
 		'as'=>'actividades.varios'
 	]);
+
 	Route::get('actividades/{id}/post',[
 		'uses'=>'ActividadesController@post',
 		'as'=>'actividades.post'
@@ -182,9 +184,15 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 	]);
 
 	Route::resource('fotos','FotosController');
+
 	Route::get('fotos/{id}/destroy',[
 		'uses'=>'FotosController@destroy',
 		'as'=>'fotos.destroy'
+	]);
+
+	Route::get('fotos/destroy/varios',[
+		'uses'=>'FotosController@eliminarVarios',
+		'as'=>'fotos.varios'
 	]);
 
 

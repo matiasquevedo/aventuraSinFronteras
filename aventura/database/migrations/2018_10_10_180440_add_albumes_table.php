@@ -16,7 +16,8 @@ class AddAlbumesTable extends Migration
         //
         Schema::create('albumes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');            
+            $table->string('titulo');
+            $table->string('slug')->nullable();          
             $table->string('descripcion');
             $table->string('portada');
             $table->integer('user_id')->unsigned();
