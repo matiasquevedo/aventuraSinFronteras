@@ -29,32 +29,36 @@
         
     </div>
   </div>
- <div class="mt-4">
-  {!! Form::open(['route'=>'fotos.varios', 'method'=>'GET','files'=>'true']) !!}
-    <div class="form-group" style="display: none;">
-      {!! Form::text('albumSlug',$album->slug,['class'=>'form-control','placeholder'=>'Cantidad de Jugadores','required']) !!}
-    </div>
-    <div class="container-fluid">
-      <div class="form-group d-flex justify-content-between">
-          {!! Form::submit('Eliminar Seleccionados',['class'=>'btn btn-danger']) !!}
-      </div>
-    </div>      
-      <div class="row">
-        @foreach($fotos as $foto)
-          <p>{{ Form::checkbox('box[]',$foto->id, null, ['class' => 'field']) }}</p>
-          <div>
-            <a href="/images/album/fotos/{{$foto->foto}}" data-toggle="lightbox" data-max-height="600" data-gallery="example-gallery" data-type="image" class="col-3">
-              <div class="card mb-2" style="width: 17rem;">
-                <img src="/images/album/fotos/thumbnail/{{$foto->foto}}" class="img-fluid" alt="..." style="max-height: 17rem; min-height: 17rem;">
-              </div>
-            </a>
-          </div>                      
-        @endforeach
-      </div>
+  @if(count($fotos)>0)
+    <div class="mt-4">
+     {!! Form::open(['route'=>'fotos.varios', 'method'=>'GET','files'=>'true']) !!}
+       <div class="form-group" style="display: none;">
+         {!! Form::text('albumSlug',$album->slug,['class'=>'form-control','placeholder'=>'Cantidad de Jugadores','required']) !!}
+       </div>
+       <div class="container-fluid">
+         <div class="form-group d-flex justify-content-between">
+             {!! Form::submit('Eliminar Seleccionados',['class'=>'btn btn-danger']) !!}
+         </div>
+       </div>      
+         <div class="row">
+           @foreach($fotos as $foto)
+             <p>{{ Form::checkbox('box[]',$foto->id, null, ['class' => 'field']) }}</p>
+             <div>
+               <a href="/images/album/fotos/{{$foto->foto}}" data-toggle="lightbox" data-max-height="600" data-gallery="example-gallery" data-type="image" class="col-3">
+                 <div class="card mb-2" style="width: 17rem;">
+                   <img src="/images/album/fotos/thumbnail/{{$foto->foto}}" class="img-fluid" alt="..." style="max-height: 17rem; min-height: 17rem;">
+                 </div>
+               </a>
+             </div>                      
+           @endforeach
+         </div>
 
-      
-  {!! Form::close() !!}
-  </div>
+         
+     {!! Form::close() !!}
+     </div>
+  
+  @endif
+
 
 </div>  
 @endsection

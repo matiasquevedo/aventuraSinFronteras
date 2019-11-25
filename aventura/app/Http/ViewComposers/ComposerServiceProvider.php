@@ -24,7 +24,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         view()->composer('nav', function ($view) {
             //
-            $categories = Category::all();
+            $categories = Category::has('actividades','>',0)->get();
             $view->with("categories",$categories);
         });
     }

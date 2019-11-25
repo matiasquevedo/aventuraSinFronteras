@@ -13,14 +13,14 @@
 		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.css')}}">
-		<link rel="stylesheet" href="{{ asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css')}}">
+		<link rel="stylesheet" href="{{ asset('plugins/lightbox/dist/ekko-lightbox.css')}}">
 		
 	</head>
 	<body class="backHome">
 		@include('nav')
 		@include('flash::message')
 		@yield('header')
-		<section class="section-home">
+		<section class="section-home mt-5 mb-5">
 			@yield('content')
 			@yield('footer')			
 		</section>
@@ -29,8 +29,12 @@
 		<script src="{{asset('plugins/chosen/chosen.jquery.js')}}"></script>
 		<script src="{{asset('plugins/trumbowyg/dist/trumbowyg.js')}}"></script>
 		<script src="{{asset('plugins/fontawesome/js/all.js')}}"></script>
-		<script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js')}}"></script>
+		<script src="{{asset('plugins/lightbox/dist/ekko-lightbox.js')}}"></script>
 		@yield('js')
 	</body>
 
 </html>
+
+
+
+

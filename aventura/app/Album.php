@@ -30,6 +30,6 @@ class Album extends Model
     }
 
     public function fotos(){
-    	return $this->hasMany('App\Image');
+    	return $this->hasMany('App\Foto');
     }
 }

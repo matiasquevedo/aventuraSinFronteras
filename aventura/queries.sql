@@ -19,6 +19,7 @@ select * from proyectos;
 select * from images;
 select * from pedidos;
 select * from albumes;
+select * from fotos;
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'matiasquevedo.sabbath@gmail.com', '$2y$10$eD6GV1jo7rCegmpIKkv.KeBuMjJfNYwcEhVVCPx2KM/xqfZn/fDLC', 'admin', 'rgXIX1JuZDzkzpuswd05SdzQYNeNIbGyxcoFVkUsyR1iYic4cwN9UKry7jkk', '2018-10-16 19:05:38', '2018-10-16 19:05:38'),

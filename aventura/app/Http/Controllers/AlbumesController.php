@@ -27,6 +27,11 @@ class AlbumesController extends Controller
            return view('admin.albumes.index')->with('albumes',$albumes);;
        }
 
+       public function indexPublic(){
+          $albumes = Album::has('fotos','>',0)->get();
+          return view('public.albumes.index')->with("albumes",$albumes);          
+       }
+
        /**
         * Show the form for creating a new resource.
         *
@@ -51,6 +56,7 @@ class AlbumesController extends Controller
           $album->user_id = \Auth::user()->id;
           $album->portada = '';
           $album->save();
+          $ratio = 0;
            //
 
            // if($request->file('image')){
@@ -62,6 +68,7 @@ class AlbumesController extends Controller
 
            if($request->file('image')){
                $originalImage= $request->file('image');
+
                $thumbnailImage = Image::make($originalImage);
                $thumbnailPath = public_path().'/images/album/portada/thumbnail/';
                $originalPath = public_path().'/images/album/portada/';
@@ -69,7 +76,24 @@ class AlbumesController extends Controller
                $thumbnailImage->save($originalPath.$name);
                // $thumbnailImage->resize(150,150);
                // prevent possible upsizing
-               $thumbnailImage->crop(200,200,100,50);
+               $imgSize=getimagesize($originalImage);
+               $imgWidth = $imgSize['0'];
+               $imgheight = $imgSize['1'];
+               //verificar el cateto menor
+               if($imgWidth < $imgheight){
+                 $ratio = (int) round(($imgWidth-1));
+               }elseif($imgWidth > $imgheight){
+                 $ratio = (int) round(($imgheight-1));
+               }elseif($imgWidth == $imgheight){
+                 $ratio = (int) round(($imgWidth-1));
+               }
+               $px = (int) round(($imgWidth/2)-($ratio/2));
+               $py = (int) round(($imgheight/2)-($ratio/2));
+               $thumbnailImage->crop($ratio,$ratio,$px,$py);
+               $thumbnailImage->resize(200, 200, function ($constraint) {
+                   $constraint->aspectRatio();
+                   $constraint->upsize();
+               });
                // $thumbnailImage->resize(null, 200, function ($constraint) {
                //     $constraint->aspectRatio();
                //     // $constraint->upsize();
@@ -97,6 +121,11 @@ class AlbumesController extends Controller
            $fotos = DB::table('fotos')->where('album_id','LIKE',"%$album->id%")->get();
            //dd($fotos);
            return view('admin.albumes.show')->with('album',$album)->with('fotos',$fotos);
+       }
+
+       public function showPublic($slugString){
+          $album = Album::findBySlug($slugString);
+          return view('public.albumes.show')->with('album',$album);
        }
 
        /**
