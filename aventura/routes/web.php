@@ -40,10 +40,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'ActividadesController@destroy',
 		'as'=>'actividades.destroy'
 	]);
+
 	Route::get('actividades/destroy/varios',[
 		'uses'=>'ActividadesController@eliminarVarios',
 		'as'=>'actividades.varios'
 	]);
+
 	Route::get('actividades/{id}/post',[
 		'uses'=>'ActividadesController@post',
 		'as'=>'actividades.post'
@@ -182,9 +184,15 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 	]);
 
 	Route::resource('fotos','FotosController');
+
 	Route::get('fotos/{id}/destroy',[
 		'uses'=>'FotosController@destroy',
 		'as'=>'fotos.destroy'
+	]);
+
+	Route::get('fotos/destroy/varios',[
+		'uses'=>'FotosController@eliminarVarios',
+		'as'=>'fotos.varios'
 	]);
 
 
@@ -317,63 +325,25 @@ Route::get('categoria/{categoria}',[
 	'as'=>'categoria.public'
 ]);
 
+Route::get('galeria/',[
+	'uses'=>'AlbumesController@indexPublic',
+	'as'=>'galeria.public'
+]);
+
+Route::get('album/{slug}',[
+	'uses'=>'AlbumesController@showPublic',
+	'as'=>'albumes.public.show'
+]);
+
+
+
+
 
 Route::get('evento/{id}/',[
 		'uses'=>'EventosController@PublicShow',
 		'as'=>'evento.public'
 ]);
 
-Route::get('pagar',[
-	'uses'=>'PaymentController@payWithpaypal',
-	'as'=>'pagar.paypal'
-]);
-
-Route::get('pagar/status',[
-	'uses'=>'PaymentController@paymentStatus',
-	'as'=>'pagar.status'
-]);
-
-//////////////Carrito
-Route::get('cart/show',[
-	'uses'=>'CartController@show',
-	'as'=>'cart.show'
-]);
-
-Route::get('cart/add/{actividad}',[
-	'uses'=>'CartController@add',
-	'as'=>'cart.add'
-]);
-
-Route::post('cart',[
-	'uses'=>'CartController@store',
-	'as'=>'add.cart'
-]);
-
-Route::get('cart/destroy/{actividad}',[
-	'uses'=>'CartController@destroy',
-	'as'=>'cart.destroy'
-]);
-
-Route::get('cart/trash',[
-	'uses'=>'CartController@trash',
-	'as'=>'cart.trash'
-]);
-
-////////////////////////////////////////////
-////////////////////////////////////////////
-/////////////////PAGOS//////////////////////
-////////////////////////////////////////////
-////////////////////////////////////////////
-
-Route::get('pago/',[
-	'uses'=>'TodoPagoController@generarPago',
-	'as'=>'pago'
-]);
-
-Route::post('pagar/',[
-	'uses'=>'TodoPagoController@pagar',
-	'as'=>'efectuar.pago'
-]);
 
 
 

@@ -18,6 +18,13 @@ select * from categoryactividadespost;
 select * from proyectos;
 select * from images;
 select * from pedidos;
+select * from albumes;
+select * from fotos;
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'matiasquevedo.sabbath@gmail.com', '$2y$10$eD6GV1jo7rCegmpIKkv.KeBuMjJfNYwcEhVVCPx2KM/xqfZn/fDLC', 'admin', 'rgXIX1JuZDzkzpuswd05SdzQYNeNIbGyxcoFVkUsyR1iYic4cwN9UKry7jkk', '2018-10-16 19:05:38', '2018-10-16 19:05:38'),
+(2, 'miguel angel tonidandel', 'miguelatonidandel@gmail.com', '$2y$12$AwgbfcdRZBjZkbs5LsPtUOcLnlzygcKIrYuwLnfKTwlhzCx.W9I2C', 'admin', 'SCPozZhyO1qndG9T5OyKpulZIAMHgmoEoLrTvh1ST56XaNYuNSijMjsTNmrS', '2018-10-17 00:15:20', '2018-10-17 00:16:12');
+
 
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES

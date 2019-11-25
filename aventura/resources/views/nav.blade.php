@@ -1,15 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;">
     <div class="navbar-header">
         <a class="navbar-brand" href="{{ route('principal')}}">
-          <img src="images/logo.png" width="35"></a>
+          <img src="/images/logo.png" width="35"></a>
     </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
            <ul class="navbar-nav mr-auto">
             @foreach($categories as $category)
               <li class="nav-item"><a class="nav-link" href=" {{route('categoria.public',$category->slug)}} "> {{$category->name}} <span class="sr-only">(current)</span></a></li>
             @endforeach
-            <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>    
 
+            @if(count(App\Album::all())>0)
+              <li class="nav-item"><a class="nav-link" href="{{route('galeria.public')}}">Galeria</a></li>
+            @endif            
+            <li class="nav-item"><a class="nav-link" href="">Contacto</a></li>    
           </ul>
             <div class="form-inline">
                 
