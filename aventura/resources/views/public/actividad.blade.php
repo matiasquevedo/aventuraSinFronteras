@@ -2,39 +2,41 @@
 
 @section('title',$actividad->title)
 
+@section('header')
+
+@endsection
+
 @section('content')
 <div class="container">
-	<div class="text-center">		
-		<img src="/images/actividades/{{$image}}" height="50%" alt="">
-	</div>
-	<h2> {{$actividad->title}} </h2>
-	<h3> {{$actividad->volanta}} </h3>
-	<div class="text-justify">
-		<p>{!!$actividad->descripcion!!}</p>
-	</div><br>
-			
-		<div class="text-justify">
-			<h4><i>Recomendaciones</i></h4>
-			<p>{!!$actividad->recomendacion!!}</p>
-		</div><br>
-
+	<div class="mb-3">
+		<div class="" id="img-container" style="width: 600px">		
+			<img src="/images/actividades/{{$actividad->image->foto}}" width="600" alt="{{$actividad->title}}" >
+		</div>
 	</div>
 	
+	<h2> {{$actividad->title}} </h2>
+	<h4> {{$actividad->volanta}} </h4>
+	<div class="text-justify">
+		<p>{!!$actividad->descripcion!!}</p>
+	</div>
+			
+	<div class="text-justify border p-3">
+		<h4><i><u>Recomendaciones</u></i></h4>
+		<p>{!!$actividad->recomendacion!!}</p>
+	</div><br>
+
 </div>
+
 @endsection
 
 @section('js')
+<script src="{{asset('plugins/image-zoom/dist/js-image-zoom.js')}}"></script>
 <script>
-          $(function () {
-              var date = new Date();
-              date.setDate(date.getDate() - 7);
-
-            $('#datetimepicker1').datepicker({
-                maxDate: 'now',
-                showTodayButton: true,
-                showClear: true,
-                minDate: date
-            });
-        });
-    </script>
+	var options = {
+	    width: 600,
+	    zoomWidth: 500,
+	    offset: {vertical: 0, horizontal: 10}
+	};
+	new ImageZoom(document.getElementById("img-container"), options);
+</script>
 @endsection

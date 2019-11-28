@@ -31,8 +31,8 @@ class Actividad extends Model
     	return $this->belongsTo('App\User');
     }
 
-    public function images(){
-    	return $this->hasMany('App\Image');
+    public function image(){
+    	return $this->hasOne('App\Image');
     }
 
     public function items(){

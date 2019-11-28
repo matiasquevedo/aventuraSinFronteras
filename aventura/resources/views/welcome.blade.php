@@ -20,7 +20,7 @@
 		@include('nav')
 		@include('flash::message')
 		@yield('header')
-		<section class="section-home mt-5 mb-5">
+		<section class="section-home mt-3 mb-5">
 			@yield('content')
 			@yield('footer')			
 		</section>
@@ -30,6 +30,7 @@
 		<script src="{{asset('plugins/trumbowyg/dist/trumbowyg.js')}}"></script>
 		<script src="{{asset('plugins/fontawesome/js/all.js')}}"></script>
 		<script src="{{asset('plugins/lightbox/dist/ekko-lightbox.js')}}"></script>
+		<script src="{{asset('plugins/image-zoom/dist/js-image-zoom.js')}}"></script>
 		@yield('js')
 	</body>
 

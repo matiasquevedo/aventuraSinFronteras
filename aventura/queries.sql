@@ -27,10 +27,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `remember_token`
 
 
 
-INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Montaña', '2018-10-17 00:26:35', '2018-10-17 00:26:35'),
-(2, 'Lago', '2018-10-17 00:27:36', '2018-10-17 00:27:36'),
-(3, 'Actividades de Rio', '2018-10-17 00:27:49', '2018-10-17 00:27:49');
+INSERT INTO `categories` (`id`, `name`,`slug`, `created_at`, `updated_at`) VALUES
+(1, 'Montaña','montaña', '2018-10-17 00:26:35', '2018-10-17 00:26:35'),
+(2, 'Lago','lago', '2018-10-17 00:27:36', '2018-10-17 00:27:36'),
+(3, 'Actividades de Rio','actividades-de-rio', '2018-10-17 00:27:49', '2018-10-17 00:27:49');
 
 INSERT INTO `actividades` (`id`, `state`, `title`, `volanta`, `duracion`, `largo`, `descripcion`, `recomendacion`, `precioPublico`, `descuento`, `user_id`, `category_id`, `created_at`, `updated_at`) VALUES
 (2, '0', 'Natural Rafting', 'Rafting de 21 kilómetros con Trekking y desayuno de frutas de estación.', '240', '21', 'Rafting único por su duración y su vista. Hermosa bajada de Rafting por el río Atuel de 21 kilómetros de recorrido, donde realizamos un trekking de 40 minutos y compartimos un refrigerio saludable con frutas de estación, cereales y jugo de frutas. Actividad recomendable para familias y grupos de amigos.', 'Para realizar esta actividad de forma 100% segura es necesario calzado seguro (acordonado o de neopreno) ropa de recambio y protector solar. Esta actividad no es recomendable para Mujeres embarazadas y niños de menos de 4 años.', '0', '0', 2, 3, '2018-10-23 00:11:00', '2018-10-27 18:57:07'),
