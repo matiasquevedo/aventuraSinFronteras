@@ -5,66 +5,66 @@
 
 @section('content')
 
-	@if(count($errors)>0)
+<div class="bg-white px-3 py-3 border rounded">
+		@if(count($errors)>0)
 
-		<div class="alert alert-danger">
-			<ul>
-				@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+				<ul>
+					@foreach($errors->all() as $error)
 
-					<li>
-						{{ $error}}
-					</li>
+						<li>
+							{{ $error}}
+						</li>
 
-				@endforeach
-			</ul>
+					@endforeach
+				</ul>
+				
+
+			</div>
 			
+		@endif
 
-		</div>
-		
-	@endif
+		<div class="container">
 
-	<div class="container">
-
-		<div>
-			<h3>Nuevo Album</h3>
-		</div>
-
-		{!! Form::open(['route'=>'albumes.store', 'method'=>'POST','files'=>'true']) !!}
-
-		<div class="row">
-  			<div class="col-md-8">
-				<div class="form-group">
-				{!! Form::label('titulo','Titulo*') !!}<p><i>Minimo 8 Caracteres</i></p>
-				{!! Form::text('titulo',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('descripcion','Descripción') !!}
-				{!! Form::textarea('descripcion',null,['class'=>'form-control','placeholder'=>'Contenido','required']) !!}
-				</div>
+			<div>
+				<h3>Nuevo Album</h3>
 			</div>
 
+			{!! Form::open(['route'=>'albumes.store', 'method'=>'POST','files'=>'true']) !!}
 
-  			<div class="col-md-4">
+			<div class="row">
+	  			<div class="col-md-8">
+					<div class="form-group">
+					{!! Form::label('titulo','Titulo*') !!}<p><i>Minimo 8 Caracteres</i></p>
+					{!! Form::text('titulo',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+					</div>
 
-				<div class="form-group">
-				{!! Form::label('portada','Imagen de Portada*') !!}
-				{!! Form::file('portada',['id'=>'upload','name'=>'image']) !!}
+					<div class="form-group">
+					{!! Form::label('descripcion','Descripción') !!}
+					{!! Form::textarea('descripcion',null,['class'=>'form-control','placeholder'=>'Contenido','required']) !!}
+					</div>
 				</div>
 
-				<div class="preview">
-					<img id="image" width="400" height="400">
-				</div>
-  			</div>
-		</div>	
 
-		<div class="form-group">
-			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+	  			<div class="col-md-4">
+
+					<div class="form-group">
+					{!! Form::label('portada','Imagen de Portada*') !!}
+					{!! Form::file('portada',['id'=>'upload','name'=>'image']) !!}
+					</div>
+	  			</div>
+			</div>	
+
+			<div class="form-group">
+				{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+			</div>
+
+			{!! Form::close() !!}
+
 		</div>
 
-		{!! Form::close() !!}
+</div>
 
-	</div>
 
 @endsection
 

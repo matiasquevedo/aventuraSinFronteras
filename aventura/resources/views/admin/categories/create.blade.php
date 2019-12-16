@@ -4,8 +4,8 @@
 @section('title', 'Nuevo Categoria')
 
 @section('content')
-<div class="container">
-	<br>
+<div class="bg-white px-3 py-3 border rounded">
+	<h4>Nueva Categoria</h4>
 	@if(count($errors)>0)
 
 		<div class="alert alert-danger">
@@ -39,6 +39,10 @@
 
 
 	{!! Form::close() !!}
+</div>
+<div class="container">
+	<br>
+	
 	
 </div>
 @endsection

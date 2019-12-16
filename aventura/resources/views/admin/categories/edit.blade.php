@@ -5,7 +5,8 @@
 @section('title', 'Editar Categoria ' . $category->name)
 
 @section('content')
-<div class="container"><br>
+<div class="bg-white px-3 py-3 border rounded">
+	<h4>Editar Categoria: {{$category->name}}</h4>
 	{!! Form::open(['route'=>['categories.update', $category->id], 'method'=>'PUT']) !!}
 
 		<div class="form-group">
@@ -21,4 +22,5 @@
 
 	{!! Form::close() !!}
 </div>
+
 @endsection

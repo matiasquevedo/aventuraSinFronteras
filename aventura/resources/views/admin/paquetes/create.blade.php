@@ -5,88 +5,91 @@
 
 @section('content')
 
-	@if(count($errors)>0)
+<div class="bg-white px-3 py-3 border rounded">
+		@if(count($errors)>0)
 
-		<div class="alert alert-danger">
-			<ul>
-				@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+				<ul>
+					@foreach($errors->all() as $error)
 
-					<li>
-						{{ $error}}
-					</li>
+						<li>
+							{{ $error}}
+						</li>
 
-				@endforeach
-			</ul>
-			
-
-		</div>
-		
-	@endif
-
-	<div class="container">
-
-		<div>
-			<h3>Nuevo Paquete de Actividades</h3>
-		</div>
-
-		{!! Form::open(['route'=>'paquetes.store', 'method'=>'POST','files'=>'true']) !!}
-
-
-		<div class="row">
-  			<div class="col-md-8">
-				<div class="form-group">
-				{!! Form::label('title','Titulo*') !!}
-				{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
-				</div>
-
-
-				<div class="form-group">
-				{!! Form::label('fechaInicio','Fecha Inicio*') !!}
-				{!! Form::date('fechaInicio',null,['class'=>'form-control','placeholder'=>'Fecha Inicio','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('fechaTermino','Fecha Termino*') !!}
-				{!! Form::date('fechaTermino',null,['class'=>'form-control','placeholder'=>'Fecha Termino','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('descripcion','Descripcion*') !!}
-				{!! Form::textarea('descripcion',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Descripcion','required']) !!}
-				</div>
-
+					@endforeach
+				</ul>
 				
+
+			</div>
+			
+		@endif
+
+		<div class="container">
+
+			<div>
+				<h3>Nuevo Paquete de Actividades</h3>
 			</div>
 
+			{!! Form::open(['route'=>'paquetes.store', 'method'=>'POST','files'=>'true']) !!}
 
-  			<div class="col-md-4">
-  				<div class="form-group">
-  				{!! Form::label('actividades','Actividades*') !!}
-  				{!! Form::select('actividades[]',$actividades,null,['class'=>'form-control select-tag','multiple']) !!}
-  				</div>
 
-  				<div class="form-group">
-  				{!! Form::label('precioCliente','Precio al Publico*') !!}
-  				{!! Form::text('precioCliente',null,['class'=>'form-control ','required']) !!}
-  				</div>
+			<div class="row">
+	  			<div class="col-md-8">
+					<div class="form-group">
+					{!! Form::label('title','Titulo*') !!}
+					{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+					</div>
 
-  				<div class="form-group">
-  				{!! Form::label('descuento','Descuento*') !!}
-  				{!! Form::text('descuento',null,['class'=>'form-control','required']) !!}
-  				</div>
-  			</div>
-		</div>		
 
-		<div class="form-group">
-			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+					<div class="form-group">
+					{!! Form::label('fechaInicio','Fecha Inicio*') !!}
+					{!! Form::date('fechaInicio',null,['class'=>'form-control','placeholder'=>'Fecha Inicio','required']) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('fechaTermino','Fecha Termino*') !!}
+					{!! Form::date('fechaTermino',null,['class'=>'form-control','placeholder'=>'Fecha Termino','required']) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('descripcion','Descripcion*') !!}
+					{!! Form::textarea('descripcion',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Descripcion','required']) !!}
+					</div>
+
+					
+				</div>
+
+
+	  			<div class="col-md-4">
+	  				<div class="form-group">
+	  				{!! Form::label('actividades','Actividades*') !!}
+	  				{!! Form::select('actividades[]',$actividades,null,['class'=>'form-control select-tag','multiple']) !!}
+	  				</div>
+
+	  				<div class="form-group">
+	  				{!! Form::label('precioCliente','Precio al Publico*') !!}
+	  				{!! Form::text('precioCliente',null,['class'=>'form-control ','required']) !!}
+	  				</div>
+
+	  				<div class="form-group">
+	  				{!! Form::label('descuento','Descuento*') !!}
+	  				{!! Form::text('descuento',null,['class'=>'form-control','required']) !!}
+	  				</div>
+	  			</div>
+			</div>		
+
+			<div class="form-group">
+				{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+			</div>
+
+			{!! Form::close() !!}
+
+
 		</div>
-
-		{!! Form::close() !!}
-
-
-	</div>
 	
-	
+
+</div>
+
 
 @endsection
 

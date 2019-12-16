@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/all.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/lightbox/dist/ekko-lightbox.css')}}">
+		<link rel="stylesheet" href="{{ asset('plugins/easyAutocomplete/easy-autocomplete.css')}}">
 		
 	</head>
 	<body class="backHome">
@@ -31,6 +32,7 @@
 		<script src="{{asset('plugins/fontawesome/js/all.js')}}"></script>
 		<script src="{{asset('plugins/lightbox/dist/ekko-lightbox.js')}}"></script>
 		<script src="{{asset('plugins/image-zoom/dist/js-image-zoom.js')}}"></script>
+		<script src="{{asset('plugins/easyAutocomplete/jquery.easy-autocomplete.js')}}"></script>
 		@yield('js')
 	</body>
 

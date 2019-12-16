@@ -5,6 +5,9 @@
 
 @section('content')
 
+<div class="bg-white px-3 py-3 border rounded">
+
+	<h4>Nuevo Usuario</h4>
 	@if(count($errors)>0)
 
 		<div class="alert alert-danger">
@@ -42,7 +45,7 @@
 
 		<div class="form-group">
 			{!! Form::label('type','Tipo Usuario') !!}
-			{!! Form::select('type',[''=>'Seleccione Tipo de Usuario' ,'member'=>'Editor','admin'=>'Administrador'],null,['class'=>'form-control','placeholder'=>'Seleccione una opción...','required']) !!}
+			{!! Form::select('type',['admin'=>'Administrador'],null,['class'=>'form-control','placeholder'=>'Seleccione una opción...','required']) !!}
 		</div>
 
 		<div class="form-group">
@@ -52,6 +55,10 @@
 
 
 	{!! Form::close() !!}
+	
+</div>
+
+	
 
 
 @endsection

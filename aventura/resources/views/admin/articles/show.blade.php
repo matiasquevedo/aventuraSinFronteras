@@ -4,55 +4,47 @@
 @section('title','Actividad: '.$actividad->title)
 
 @section('content')
-<div>
-  <ol class="breadcrumb">
-    <li>Categoria: </li><br>
-    <li><a href="{{ route('categories.show',$actividad->category->id)}}">{{$actividad->category->name}}</a></li>
-  </ol>
-  <div>
-    {{$actividad->created_at}}
-  </div>
-
-  <div>
-    {{$actividad->update_at}}
-  </div>
-</div>
-
-<div class="container">
-  <div class="text-center">
-    <div>
-      <div class="cambiar-portada">                      
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-edit"></i>
-        </button>
+<div class="bg-white px-3 py-3 border rounded">
+  <div class="row">
+    <div class="col-4">
+      <div class="text-center">
+        <div>
+          <div class="cambiar-portada">                      
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-edit"></i>
+            </button>
+          </div>
+          <img src="/images/actividades/{{$image}}" width="250">
+        </div>
       </div>
-      <img src="/images/actividades/{{$image}}" width="500">
+    </div>
+    <div class="col-8">
+        <p><i>Categoria:<a href="{{ route('categories.show',$actividad->category->id)}}">{{$actividad->category->name}}</a></i></p>
+        <h3>{{$actividad->title}}</h3>
+        <h4>{{$actividad->volanta}}</h4>
+        <div>
+          <span class="glyphicon glyphicon-hourglass">Duración: {{$actividad->duracion}}m</span> <br>
+          <span class="glyphicon glyphicon-map-marker">Largo: {{$actividad->largo}}km</span> 
+        </div>
+        <div>
+          <h4>Precio Proveedor: {{$actividad->precioProveedor}} </h4>
+          <h4>Precio Publico: {{$actividad->precioPublico}}   </h4>
+          <h4>Descuento: {{$actividad->descuento}}   </h4>
+        </div>
     </div>
   </div>
-  <br>              
-	<h3>{{$actividad->title}}</h3>
-  <h4>{{$actividad->volanta}}</h4>
-  <div>
-    <span class="glyphicon glyphicon-hourglass">Duración: {{$actividad->duracion}}m</span> <br>
-    <span class="glyphicon glyphicon-map-marker">Largo: {{$actividad->largo}}km</span> 
-  </div>
-  <div>
-    <h4>Precio Proveedor: {{$actividad->precioProveedor}} </h4>
-    <h4>Precio Publico: {{$actividad->precioPublico}}   </h4>
-    <h4>Descuento: {{$actividad->descuento}}   </h4>
-  </div>
-	<div class="panel panel-default">
-		<div class="panel-body" id="content">			
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Descripción</h3><br>{!!$actividad->descripcion!!}
-        </div>
-        <div class="col-md-6">
-          <h3>Recomendaciones</h3><br>{!!$actividad->recomendacion!!}
-        </div>
-      </div>			    				
-		</div>
+
+  <div class="container mt-3">
+    <div>
+      <h5>Descripción</h5>
+      {!!$actividad->descripcion!!}
+    </div>
+    <div>
+      <h5>Recomendaciones</h5>
+      {!!$actividad->recomendacion!!}
+    </div>
   </div>
 </div>
+
 
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

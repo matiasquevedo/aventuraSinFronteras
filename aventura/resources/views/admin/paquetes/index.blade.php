@@ -5,13 +5,8 @@
 
 @section('content')
 
-<div class="col-md-1">
-  
-  <a href="{{ route('paquetes.create')}}" class="btn btn-info">Nuevo</a>
-
-</div>
-<div class="container">
-  <h4>Lista de Paquetes</h4>
+<div class="bg-white px-3 py-3 border rounded">
+  <h4>Lista de Paquetes <a class="" href="{{route('paquetes.create')}}" ><i style="font-size: 25px !important;" class="fas fa-plus-circle"></i></a></h4>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -47,4 +42,5 @@
   </table>
   {{$paquetes->render()}}
 </div>
+
 @endsection

@@ -4,12 +4,9 @@
 @section('title', 'Lista de Categorias')
 
 @section('content')
-<div>
-  
-  <a href="{{ route('categories.create')}}" class="btn btn-info">Nuevo</a>
-
-</div>
-<div class="container">
+<div class="bg-white px-3 py-3 border rounded">
+  <h4>Categorias <a class="" href="{{route('categories.create')}}" ><i style="font-size: 25px !important;" class="fas fa-plus-circle"></i></a></h4>
+  <div class="container">
     <table class="table table-striped">
     <thead>
       <tr>
@@ -36,7 +33,7 @@
   </table>
   {!! $categories->render() !!}   
 
-  
+</div>
 </div>
 
 @endsection

@@ -10,7 +10,7 @@
 			@foreach($actividades as $actividad)
 				<div class="col-lg-3 col-md-3 col-sm-6 mt-3">
 					<div class="card" style="width: 17rem; min-height: 30rem; max-height: 30rem;">
-					  <img class="card-img-top" src="/images/actividades/{{$actividad->image->foto}}" alt=" {{$actividad->slug}} " style="width: 17rem;object-fit: cover;min-height: 20rem !important;max-height: 20rem !important;">
+					  <img class="card-img-top" src="/images/actividades/thumbnail/{{$actividad->image->foto}}" alt=" {{$actividad->slug}} " style="width: 17rem;object-fit: cover;min-height: 20rem !important;max-height: 20rem !important;">
 					  
 					  <div class="card-body position-relative">
 					  	<p><i>{{$actividad->category->name}}</i></p>

@@ -5,7 +5,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="bg-white px-3 py-3 border rounded">
   <div class="row">
     <div class="col-4">
       <img src="/images/album/portada/thumbnail/{{$album->portada}}" class="card-img-top" alt="..." style="max-height: 18rem; min-height: 18rem; ">

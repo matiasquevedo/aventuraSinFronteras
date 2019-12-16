@@ -1,50 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #fe6601 !important;color:white !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-admin" style="background-color: white !important; height: 70px; max-width: 100% !important;min-width: 100% !important; box-shadow: 0 15px 25px -25px #333;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{{ route('admin.inicio')}}">
-            <img src="images/logo.png" width="35">
-            <!--<img src="/images/embalsa.png" alt="" width="30px"> --> </a>
-    </div>
+    
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="{{ route('users.index')}}">&nbsp;<span class="sr-only">(current)</span></a></li>
-
-        <li class="nav-item"><a class="nav-link" href="{{ route('users.index')}}">Usuarios<span class="sr-only">(current)</span></a></li>        
-        
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actividades</span></a>          
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('categories.index')}}">Categorias</a>
-            <a class="dropdown-item" href="{{ route('actividades.index')}}">Actividades</a>
-            <!-- <div class="dropdown-divider"></div> -->
-            <a class="dropdown-item" href="{{ route('paquetes.index')}}">Paquetes de Actividades</a>
-          </div>
-        </li> 
-        <li class="nav-item"><a class="nav-link" href=" {{ route('informacion.index')}} ">Información</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ route('admin.eventos.index')}}">Eventos</a></li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Fotos</span></a>          
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('albumes.index')}}">Fotos</a>
-            <a class="dropdown-item" href="{{ route('albumes.create')}}">Nuevo Album</a>
-          </div>
-        </li>
-
-
-        <li class="nav-item"><a class="nav-link" href="{{ route('mensajes.index')}}">Mensajes
-          @if($mensajes > 0)
-            <span class="badge badge-secondary"> {{$mensajes}} </span>
-          @endif
-
-        </a></li>
-
-
-        
-
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @guest

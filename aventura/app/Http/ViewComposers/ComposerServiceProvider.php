@@ -16,9 +16,9 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        view()->composer('admin.template.partials.nav', function ($view) {
+        view()->composer('admin.index', function ($view) {
             //
-            $mensajes = Mensaje::where('state','=','0')->count();
+            $mensajes = Mensaje::all();
             $view->with("mensajes",$mensajes);
         });
 

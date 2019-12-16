@@ -3,17 +3,9 @@
 @section('title', 'Lista de Actividades')
 
 @section('content')
-<div class="container">
-  <h3>Actividades <span class="badge badge-info">{{count($actividades)}}</span></h3>
-  
+<div class="bg-white px-3 py-3 border rounded">
+  <h4>Lista de Actividade <a class="" href="{{route('actividades.create')}}" ><i style="font-size: 25px !important;" class="fas fa-plus-circle"></i></a></h4> 
   <div class="row mt-4">
-
-    <div class="col-md-1">
-      
-      <a href="{{ route('actividades.create')}}" class="btn btn-info">Nuevo</a>
-
-    </div>
-
     <div class="col-md-9">
       {!! Form::open(['route'=>'actividades.varios', 'method'=>'GET','files'=>'true']) !!}
       <table class="table table-striped">
@@ -66,6 +58,11 @@
     </div>
 
   </div>
+</div>
+<div class="container">
+  <h3></h3>
+  
+  
   
 </div>
 

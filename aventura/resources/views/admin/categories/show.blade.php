@@ -4,8 +4,8 @@
 @section('title', $category->name)
 
 @section('content')
-<div class="container">
-  <h3>Lista de Articulos con la categoria: {{$category->name}}</h3>    
+<div class="bg-white px-3 py-3 border rounded">
+  <h4>Lista de actividades de la categoria: {{$category->name}}</h4>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -38,10 +38,7 @@
       
     </tbody>
   </table>
-
-
-
-
 </div>
+
 
 @endsection

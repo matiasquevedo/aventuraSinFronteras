@@ -315,6 +315,11 @@ Route::get('mensaje/{id}/destroy',[
 	'as'=>'mensaje.destroy'
 ]);
 
+Route::post('mensajes/send',[
+	'uses'=>'MensajesController@sendPublicMsn',
+	'as'=>'mensaje.public'
+]);
+
 Route::get('actividad/{actividad}',[
 	'uses'=>'PrincipalController@actividadPublic',
 	'as'=>'actividad.public'
@@ -335,6 +340,7 @@ Route::get('album/{slug}',[
 	'as'=>'albumes.public.show'
 ]);
 
+Route::any('/search', 'ActividadesController@search')->name('actividades.search');
 
 
 

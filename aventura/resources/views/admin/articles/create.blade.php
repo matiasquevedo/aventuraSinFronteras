@@ -5,106 +5,103 @@
 
 @section('content')
 
-	@if(count($errors)>0)
+<div class="bg-white px-3 py-3 border rounded">
+		@if(count($errors)>0)
 
-		<div class="alert alert-danger">
-			<ul>
-				@foreach($errors->all() as $error)
+			<div class="alert alert-danger">
+				<ul>
+					@foreach($errors->all() as $error)
 
-					<li>
-						{{ $error}}
-					</li>
+						<li>
+							{{ $error}}
+						</li>
 
-				@endforeach
-			</ul>
+					@endforeach
+				</ul>
+				
+
+			</div>
 			
+		@endif
 
-		</div>
-		
-	@endif
+		<div class="container"><br>
 
-	<div class="container"><br>
-
-		<div>
-			<h3>Nueva Actividad</h3>
-		</div>
-
-		{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','class'=>'form','files'=>'true', 'enctype'=>'multipart/form-date']) !!}
-
-
-		<div class="row">
-  			<div class="col-md-8">
-  				{{ csrf_field() }}
-				<div class="form-group">
-				{!! Form::label('title','Titulo*') !!}
-				{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('volanta','Volanta*') !!}
-				{!! Form::text('volanta',null,['class'=>'form-control','placeholder'=>'Volanta','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('descripcion','Descripcion*') !!}
-				{!! Form::textarea('descripcion',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Descripcion','required']) !!}
-				</div>
-
-				<div class="form-group">
-				{!! Form::label('recomendacion','Recomendaciones*') !!}
-				{!! Form::textarea('recomendacion',null,['class'=>'form-control','id'=>'trumbowyg-demo2','placeholder'=>'Recomendaciones','required']) !!}
-				</div>
+			<div>
+				<h3>Nueva Actividad</h3>
 			</div>
 
+			{!! Form::open(['route'=>'actividades.store', 'method'=>'POST','class'=>'form','files'=>'true', 'enctype'=>'multipart/form-date']) !!}
 
-  			<div class="col-md-4">
-  				
-				<div class="form-group">
-				{!! Form::label('category_id','Categoria*') !!}
-				{!! Form::select('category_id',$categories,null,['class'=>'form-control select-category','required']) !!}
+
+			<div class="row">
+	  			<div class="col-md-8">
+	  				{{ csrf_field() }}
+					<div class="form-group">
+					{!! Form::label('title','Titulo*') !!}
+					{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('volanta','Volanta*') !!}
+					{!! Form::text('volanta',null,['class'=>'form-control','placeholder'=>'Volanta','required']) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('descripcion','Descripcion*') !!}
+					{!! Form::textarea('descripcion',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Descripcion','required']) !!}
+					</div>
+
+					<div class="form-group">
+					{!! Form::label('recomendacion','Recomendaciones*') !!}
+					{!! Form::textarea('recomendacion',null,['class'=>'form-control','id'=>'trumbowyg-demo2','placeholder'=>'Recomendaciones','required']) !!}
+					</div>
 				</div>
 
-				<div class="form-group">
-				{!! Form::label('precioPublico','Precio al Publico*') !!}
-				{!! Form::text('precioPublico',null,['class'=>'form-control ','required']) !!}
-				</div>
 
-				<div class="form-group">
-				{!! Form::label('descuento','Descuento*') !!}
-				{!! Form::text('descuento',null,['class'=>'form-control','required']) !!}
-				</div>
+	  			<div class="col-md-4">
+	  				
+					<div class="form-group">
+					{!! Form::label('category_id','Categoria*') !!}
+					{!! Form::select('category_id',$categories,null,['class'=>'form-control select-category','required']) !!}
+					</div>
 
-				<div class="form-group">
-				{!! Form::label('duracion','Duracion*') !!} <p><i>En Minutos (0 si se desconoce)</i></p>
-				{!! Form::text('duracion',null,['class'=>'form-control','placeholder'=>'Duracion','required']) !!}
-				</div>
+					<div class="form-group">
+					{!! Form::label('precioPublico','Precio al Publico*') !!}
+					{!! Form::text('precioPublico',null,['class'=>'form-control ','required']) !!}
+					</div>
 
-				<div class="form-group">
-				{!! Form::label('largo','Largo del Recorrido*') !!} <p><i>En Kilometros (0 si se desconoce)</i></p>
-				{!! Form::text('largo',null,['class'=>'form-control','placeholder'=>'Largo del Recorrido','required']) !!}
-				</div>
+					<div class="form-group">
+					{!! Form::label('descuento','Descuento*') !!}
+					{!! Form::text('descuento',null,['class'=>'form-control','required']) !!}
+					</div>
 
-				<div class="form-group">
-				{!! Form::label('image','Imagen de Portada*') !!}
-				{!! Form::file('image',['id'=>'upload','name'=>'image','enctype'=>'multipart/form-data']) !!}
-				</div>
+					<div class="form-group">
+					{!! Form::label('duracion','Duracion*') !!} <p><i>En Minutos (0 si se desconoce)</i></p>
+					{!! Form::text('duracion',null,['class'=>'form-control','placeholder'=>'Duracion','required']) !!}
+					</div>
 
-				<div class="preview">
-					<img id="image" src="/images/picture.svg" width="300" height="400">
-				</div>
-  			</div>
-		</div>		
+					<div class="form-group">
+					{!! Form::label('largo','Largo del Recorrido*') !!} <p><i>En Kilometros (0 si se desconoce)</i></p>
+					{!! Form::text('largo',null,['class'=>'form-control','placeholder'=>'Largo del Recorrido','required']) !!}
+					</div>
 
-		<div class="form-group">
-			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+					<div class="form-group">
+					{!! Form::label('image','Imagen de Portada*') !!}
+					{!! Form::file('image',['id'=>'upload','name'=>'image','enctype'=>'multipart/form-data']) !!}
+					</div>
+	  			</div>
+			</div>		
+
+			<div class="form-group">
+				{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
+			</div>
+
+			{!! Form::close() !!}
+
+
 		</div>
-
-		{!! Form::close() !!}
-
-
-	</div>
 	
-	
+</div>
 
 @endsection
 

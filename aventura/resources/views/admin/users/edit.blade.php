@@ -4,7 +4,8 @@
 @section('title', 'Editar Usuario ' . $user->name)
 
 @section('content')
-
+<div class="bg-white px-3 py-3 border rounded">
+	<h4>Editar Usuario: {{$user->name}}</h4>
 	{!! Form::open(['route'=>['users.update', $user->id], 'method'=>'PUT']) !!}
 
 		<div class="form-group">
@@ -29,6 +30,7 @@
 
 
 	{!! Form::close() !!}
-
+	
+</div>
 
 @endsection
